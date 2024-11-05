@@ -1,0 +1,23 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left-side{
+    width: 50%;
+    text-align: center;
+    justify-content: center
+
+}
+.right-side{
+    width: 50%;
+    justify-content: center
+
+}
