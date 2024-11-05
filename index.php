@@ -13,14 +13,14 @@ session_start();
             <img src="logo.php" alt="Logo">
         </div>
         <div class="right-side">
-        <form action="menu.php" method="post">
+        <form action="./php/login.php" method="post">
             <label for="Usuario">Usuario: </label>
             <input type="text" name="Usuario" id="Usuario">
             <br><br>
             <label for="Contra">Contraseña: </label>
-            <input type="text" name="Contra" id="Contra">
+            <input type="password" name="Contra" id="Contra">
             <br><br> 
-            <button type="submit">Iniciar sesion</button>
+            <button type="submit" name="btn_iniciar_sesion">Iniciar sesion</button>
         </form>  
         </div>  
     </div>
