@@ -53,7 +53,8 @@ if (!isset($_SESSION['id'])) {
             <div>
                 <a class="navbar-brand " href="#">
                     <img src="./img/logo.png" alt="" width="100" height="90">
-                     echo "<a href='./registro.php'><button class='atrasboton'><img class='atrasimg' src='./img/libro.png' alt=''></button></a>";
+                    <?php
+                    echo "<a href='./registro.php'><button class='atrasboton'><img class='atrasimg' src='./img/libro.png' alt=''></button></a>";
                     ?> </a>
             </div>
             <div class="saludo">
