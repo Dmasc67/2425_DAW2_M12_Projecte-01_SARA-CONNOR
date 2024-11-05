@@ -18,7 +18,7 @@ session_start();
             <input type="text" name="Usuario" id="Usuario">
             <br><br>
             <label for="Contra">Contraseña: </label>
-            <input type="text" name="Contra" id="Contra">
+            <input type="password" name="Contra" id="Contra">
             <br><br> 
             <button type="submit" name="btn_iniciar_sesion">Iniciar sesion</button>
         </form>  
