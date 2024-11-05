@@ -5,25 +5,24 @@ USE bd_restaurante;
 -- Tabla de usuarios para los camareros
 CREATE TABLE usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_user VARCHAR(255),
-    contrasena VARCHAR(60)
+    nombre_user VARCHAR(100),
+    contrasena VARCHAR(15)
 );
 
 -- Tabla de salas para diferenciar mesas
 CREATE TABLE salas (
     id_sala INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_sala VARCHAR(255),
+    nombre_sala VARCHAR(100),
     tipo_sala VARCHAR(50),         -- Tipo de sala (Terraza, Comedor, Sala Privada...)
-    capacidad INT                  -- Capacidad de la sala (número de mesas o personas)                    
+    capacidad INT                  -- Capacidad de la sala (número de mesas o personas)
 );
 
--- Tabla de mesas 
+-- Tabla de mesas
 CREATE TABLE mesas (
     id_mesa INT PRIMARY KEY AUTO_INCREMENT,
     numero_mesa INT,
     id_sala INT,
-    estado ENUM('libre','ocupada') DEFAULT ('libre'),   -- El estado de la mesa (libre u ocupada)
-    FOREIGN KEY (id_sala) REFERENCES salas(id_sala)     -- Cada mesa está asociada a una sala específica 
+    estado ENUM('libre','ocupada') DEFAULT 'libre'   -- El estado de la mesa (libre u ocupada)
 );
 
 -- Tabla para los registros de ocupación de las mesas
@@ -32,10 +31,16 @@ CREATE TABLE ocupaciones (
     id_usuario INT,
     id_mesa INT,
     fecha_inicio DATETIME DEFAULT CURRENT_TIMESTAMP,    -- Fecha y hora del inicio de la ocupación
-    fecha_fin DATETIME,       -- Fecha y hora del final de la ocupación
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario), -- Permite saber quién ha hecho una ocupación
-    FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa) -- Permite saber qué mesa ha estado ocupada
+    fecha_fin DATETIME                                  -- Fecha y hora del final de la ocupación
 );
+
+-- Definición de las FOREIGN KEYs
+ALTER TABLE mesas
+ADD CONSTRAINT fk_mesas_salas FOREIGN KEY (id_sala) REFERENCES salas(id_sala);
+
+ALTER TABLE ocupaciones
+ADD CONSTRAINT fk_ocupaciones_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+ADD CONSTRAINT fk_ocupaciones_mesas FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa);
 
 
 
@@ -48,11 +53,11 @@ INSERT INTO usuarios (id_usuario, nombre_user, contrasena) VALUES
 
 -- Insertar salas
 INSERT INTO salas (id_sala, nombre_sala, tipo_sala, capacidad) VALUES
-    (1, 'Terraza 1', 'Terraza', 20),
+    (1, 'Terraza ç+', 'Terraza', 20),
     (2, 'Terraza 2', 'Terraza', 20),
     (3, 'Terraza 3', 'Terraza', 20),
-    (4, 'Menjador 1', 'Menjador', 30),
-    (5, 'Menjador 2', 'Menjador', 25),
+    (4, 'Comedor 1', 'Comedor', 30),
+    (5, 'Comedor 2', 'Comedor', 25),
     (6, 'Sala Privada 1', 'Privada', 10),
     (7, 'Sala Privada 2', 'Privada', 8),
     (8, 'Sala Privada 3', 'Privada', 12),
@@ -79,14 +84,14 @@ INSERT INTO mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
 
 -- Insertar mesas en los comedores (10 mesas en cada comedor)
 INSERT INTO mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
-    -- Mesas para el Menjador 1
+    -- Mesas para el Comedor 1
     (13, 401, 4, 'libre'),
     (14, 402, 4, 'libre'),
     (15, 403, 4, 'libre'),
     (16, 404, 4, 'libre'),
     (17, 405, 4, 'libre'),
     (18, 406, 4, 'libre'),
-    -- Mesas para el Menjador 2
+    -- Mesas para el Comedor 2
     (19, 501, 5, 'libre'),
     (20, 502, 5, 'libre'),
     (21, 503, 5, 'libre'),
