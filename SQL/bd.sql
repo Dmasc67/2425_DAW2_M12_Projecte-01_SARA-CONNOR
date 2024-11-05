@@ -5,13 +5,8 @@ USE bd_restaurante;
 -- Tabla de usuarios para los camareros
 CREATE TABLE tbl_usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-<<<<<<< HEAD
-    nombre_user VARCHAR(100),
-    contrasena VARCHAR(100)
-=======
     nombre_user VARCHAR(255),
     contrasena VARCHAR(60)
->>>>>>> main
 );
 
 -- Tabla de salas para diferenciar mesas
@@ -22,13 +17,8 @@ CREATE TABLE tbl_salas (
     capacidad INT                  -- Capacidad de la sala (número de mesas o personas)                    
 );
 
-<<<<<<< HEAD
--- Tabla de mesas
-CREATE TABLE tbl_mesas (
-=======
 -- Tabla de mesas 
-CREATE TABLE mesas (
->>>>>>> main
+CREATE TABLE tbl_mesas (
     id_mesa INT PRIMARY KEY AUTO_INCREMENT,
     numero_mesa INT,
     id_sala INT,
@@ -47,7 +37,6 @@ CREATE TABLE tbl_ocupaciones (
     FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa) -- Permite saber qué mesa ha estado ocupada
 );
 
-<<<<<<< HEAD
 -- Definición de las FOREIGN KEYs
 ALTER TABLE tbl_mesas
 ADD CONSTRAINT fk_mesas_salas FOREIGN KEY (id_sala) REFERENCES tbl_salas(id_sala);
@@ -56,8 +45,6 @@ ALTER TABLE tbl_ocupaciones
 ADD CONSTRAINT fk_ocupaciones_usuarios FOREIGN KEY (id_usuario) REFERENCES tbl_usuarios(id_usuario),
 ADD CONSTRAINT fk_ocupaciones_mesas FOREIGN KEY (id_mesa) REFERENCES tbl_mesas(id_mesa);
 
-=======
->>>>>>> main
 
 
 
@@ -68,11 +55,7 @@ INSERT INTO tbl_usuarios (id_usuario, nombre_user, contrasena) VALUES
     (3, 'Miguel', '$2y$10$wORRwXyRsJRc9ua8okkNuO6m/GbqBuZouNb4LZbwFPDG6HwNUhOVa');  -- asdASD123
 
 -- Insertar salas
-<<<<<<< HEAD
 INSERT INTO tbl_salas (id_sala, nombre_sala, tipo_sala, capacidad) VALUES
-=======
-INSERT INTO salas (id_sala, nombre_sala, tipo_sala, capacidad) VALUES
->>>>>>> main
     (1, 'Terraza 1', 'Terraza', 20),
     (2, 'Terraza 2', 'Terraza', 20),
     (3, 'Terraza 3', 'Terraza', 20),
@@ -103,13 +86,8 @@ INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
 
 
 -- Insertar mesas en los comedores (10 mesas en cada comedor)
-<<<<<<< HEAD
 INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
     -- Mesas para el Comedor 1
-=======
-INSERT INTO mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
-    -- Mesas para el Menjador 1
->>>>>>> main
     (13, 401, 4, 'libre'),
     (14, 402, 4, 'libre'),
     (15, 403, 4, 'libre'),
