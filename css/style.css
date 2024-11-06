@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(../img/Back.jpg);
+    background-image: url(../img/fondo.jpg);
 }
 .container{
     width: 50%;
@@ -63,4 +63,5 @@ h2{
     padding: 2%;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
 }
