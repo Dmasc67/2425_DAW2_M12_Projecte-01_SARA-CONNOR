@@ -43,7 +43,7 @@ if (isset($_POST['cambiar_estado'])) {
     mysqli_stmt_execute($stmt_update);
     mysqli_stmt_close($stmt_update);
 
-    // Registrar ocupación
+    // Registrar ocupación si se ocupa la mesa
     if ($estado_nuevo == 'ocupada') {
         $query_insert = "INSERT INTO tbl_ocupaciones (id_usuario, id_mesa, fecha_inicio) VALUES (?, ?, ?)";
         $stmt_insert = mysqli_prepare($conexion, $query_insert);
@@ -51,6 +51,7 @@ if (isset($_POST['cambiar_estado'])) {
         mysqli_stmt_execute($stmt_insert);
         mysqli_stmt_close($stmt_insert);
     } else {
+        // Actualizar fecha de fin si la mesa se libera
         $query_end = "UPDATE tbl_ocupaciones SET fecha_fin = ? WHERE id_mesa = ? AND fecha_fin IS NULL";
         $stmt_end = mysqli_prepare($conexion, $query_end);
         mysqli_stmt_bind_param($stmt_end, "si", $fecha_hora, $mesa_id);
@@ -69,6 +70,7 @@ if ($result_salas && mysqli_num_rows($result_salas) > 0) {
     while ($sala = mysqli_fetch_assoc($result_salas)) {
         echo "<h3>Sala: " . htmlspecialchars($sala['nombre_sala']) . " (Capacidad: " . htmlspecialchars($sala['capacidad']) . " personas)</h3>";
         
+        // Obtener las mesas de la sala
         $query_mesas = "SELECT * FROM tbl_mesas WHERE id_sala = ?";
         $stmt_mesas = mysqli_prepare($conexion, $query_mesas);
         mysqli_stmt_bind_param($stmt_mesas, "i", $sala['id_sala']);
@@ -77,12 +79,31 @@ if ($result_salas && mysqli_num_rows($result_salas) > 0) {
         
         if ($result_mesas && mysqli_num_rows($result_mesas) > 0) {
             echo "<table border='1'><tr><th>Mesa</th><th>Capacidad</th><th>Estado</th><th>Acción</th></tr>";
+            
             while ($mesa = mysqli_fetch_assoc($result_mesas)) {
                 $numero_mesa = isset($mesa['numero_mesa']) ? htmlspecialchars($mesa['numero_mesa']) : 'N/A';
                 $capacidad_mesa = isset($mesa['capacidad_mesa']) ? htmlspecialchars($mesa['capacidad_mesa']) : 'N/A';
                 $estado_actual = isset($mesa['estado']) ? htmlspecialchars($mesa['estado']) : 'libre';
                 $estado_opuesto = $estado_actual === 'libre' ? 'Ocupar' : 'Liberar';
                 
+                // Comprobar si la mesa está ocupada y por quién
+                $disabled_button = '';
+                if ($estado_actual === 'ocupada') {
+                    // Consultar si la mesa está ocupada por el usuario logueado
+                    $query_ocupacion = "SELECT id_usuario FROM tbl_ocupaciones WHERE id_mesa = ? AND fecha_fin IS NULL";
+                    $stmt_ocupacion = mysqli_prepare($conexion, $query_ocupacion);
+                    mysqli_stmt_bind_param($stmt_ocupacion, "i", $mesa['id_mesa']);
+                    mysqli_stmt_execute($stmt_ocupacion);
+                    mysqli_stmt_bind_result($stmt_ocupacion, $ocupante_id);
+                    mysqli_stmt_fetch($stmt_ocupacion);
+                    mysqli_stmt_close($stmt_ocupacion);
+
+                    if ($ocupante_id != $id_usuario) {
+                        // Si no es el usuario logueado, deshabilitar el botón de "Liberar"
+                        $disabled_button = 'disabled';
+                    }
+                }
+
                 echo "<tr>
                     <td>{$numero_mesa}</td>
                     <td>{$capacidad_mesa}</td>
@@ -91,7 +112,7 @@ if ($result_salas && mysqli_num_rows($result_salas) > 0) {
                         <form method='POST' action='mostrar.php?categoria=$categoria_seleccionada'>
                             <input type='hidden' name='mesa_id' value='" . htmlspecialchars($mesa['id_mesa']) . "'>
                             <input type='hidden' name='estado' value='{$estado_actual}'>
-                            <button type='submit' name='cambiar_estado'>{$estado_opuesto}</button>
+                            <button type='submit' name='cambiar_estado' $disabled_button>{$estado_opuesto}</button>
                         </form>
                     </td>
                 </tr>";
