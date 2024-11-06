@@ -2,7 +2,7 @@
 
 $dbserver="localhost";
 $dbusername="root";
-$dbpassword="";
+$dbpassword="1234";
 $dbbasedatos="bd_restaurante";
 try {
     $conexion = mysqli_connect($dbserver, $dbusername,$dbpassword, $dbbasedatos);
