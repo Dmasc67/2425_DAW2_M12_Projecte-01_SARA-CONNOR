@@ -42,16 +42,16 @@ if (!isset($_SESSION['Usuario'])) {
     <!------------FIN BARRA DE NAVEGACION--------------------->
     <div class="container-menu">
     <section>
-        <a class="image-container" href="./seleccionar_sala?categoria=Terraza">
-            <img src="./img/comedor.jpg" alt=""  id="terraza">
+        <a class="image-container" href="./seleccionar_sala?categoria=Comedor">
+            <img src="./img/comedor.jpg" alt=""  id="comedor">
             <div class="text-overlay">Comedor</div>
         </a>
-        <a class="image-container"  href="./seleccionar_sala?categoria=Comedor">
-            <img src="./img/private.jpg" alt="" id="comedor">
+        <a class="image-container"  href="./seleccionar_sala?categoria=Privada">
+            <img src="./img/private.jpg" alt="" id="privada">
             <div class="text-overlay">Sala privada</div>
         </a>
-        <a class="image-container" href="./seleccionar_sala?categoria=Privada">
-            <img src="./img/terraza.jpg" alt="" id="privada">
+        <a class="image-container" href="./seleccionar_sala?categoria=Terraza">
+            <img src="./img/terraza.jpg" alt="" id="terraza">
             <div class="text-overlay">Terraza</div>
         </a>
     </section>
