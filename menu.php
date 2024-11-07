@@ -24,8 +24,8 @@ if (!isset($_SESSION['Usuario'])) {
     <nav class="navegacion">
         <!-- Sección izquierda con el logo grande y el ícono adicional más pequeño -->
         <div class="navbar-left">
-            <a href="#"><img src="./img/logo.png" alt="Logo de la Marca" class="logo" style="width: 100%;"></a>
-            <a href="#"><img src="./img/lbook.png" alt="Ícono adicional" class="navbar-icon"></a>
+            <a href="./menu.php"><img src="./img/logo.png" alt="Logo de la Marca" class="logo" style="width: 100%;"></a>
+            <a href="./registro.php"><img src="./img/lbook.png" alt="Ícono adicional" class="navbar-icon"></a>
         </div>
 
         <!-- Título en el centro -->
@@ -50,7 +50,7 @@ if (!isset($_SESSION['Usuario'])) {
             <img src="./img/private.jpg" alt="" id="comedor">
             <div class="text-overlay">Sala privada</div>
         </a>
-        <a class="image-container" >
+        <a class="image-container" href="./seleccionar_sala?categoria=Privada">
             <img src="./img/terraza.jpg" alt="" id="privada">
             <div class="text-overlay">Terraza</div>
         </a>
