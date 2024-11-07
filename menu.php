@@ -48,15 +48,15 @@ if (!isset($_SESSION['sweetalert_mostrado'])) {
     <div class="container-menu">
     <section>
         <a class="image-container" href="./seleccionar_sala?categoria=Comedor">
-            <img src="./img/comedor.jpg" alt=""  id="comedor">
+            <img src="./img/Comedor 1.jpg" alt=""  id="comedor">
             <div class="text-overlay">Comedor</div>
         </a>
         <a class="image-container"  href="./seleccionar_sala?categoria=Privada">
-            <img src="./img/private.jpg" alt="" id="privada">
+            <img src="./img/Sala Privada 1.jpg" alt="" id="privada">
             <div class="text-overlay">Sala privada</div>
         </a>
         <a class="image-container" href="./seleccionar_sala?categoria=Terraza">
-            <img src="./img/terraza.jpg" alt="" id="terraza">
+            <img src="./img/Terraza 1.jpg" alt="" id="terraza">
             <div class="text-overlay">Terraza</div>
         </a>
     </section>
