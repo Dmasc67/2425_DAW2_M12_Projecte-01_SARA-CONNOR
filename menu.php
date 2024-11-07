@@ -35,45 +35,27 @@ if (!isset($_SESSION['Usuario'])) {
 
         <!-- Icono de logout a la derecha -->
         <div class="navbar-right">
-            <a href="#"><img src="./img/logout.png" alt="Logout" class="navbar-icon"></a>
+            <a href="./salir.php"><img src="./img/logout.png" alt="Logout" class="navbar-icon"></a>
         </div>
 </nav>
 </div>                    
     <!------------FIN BARRA DE NAVEGACION--------------------->
-    <div class="image-grid">
-        <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Terraza -->
-            <a href="./seleccionar_sala?categoria=Terraza">
-                <img src="./img/terraza.jpg" id="terraza" alt="Imagen de Terraza">
-                <div class="image-text">
-                    <h2>Terrazas</h2>
-                    <p>En la terraza, encontrarás tres áreas al aire libre, cada una con capacidad para cuatro mesas.</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Comedor -->
-            <a href="./seleccionar_sala?categoria=Comedor">
-                <img src="./img/comedor.jpg" id="comedor" alt="Imagen de Comedor">
-                <div class="image-text">
-                    <h2>Comedores</h2>
-                    <p>Dentro de nuestros comedores, contamos con dos zonas, cada una con cuatro mesas.</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Privada -->
-            <a href="./seleccionar_sala?categoria=Privada">
-                <img src="./img/private.jpg" id="privada" alt="Imagen de Área Privada">
-                <div class="image-text">
-                    <h2>Áreas Privadas</h2>
-                    <p>Nuestras cuatro salas privadas están equipadas con una mesa en cada una. Estos espacios brindan privacidad y comodidad.</p>
-                </div>
-            </a>
-        </div>
-    </div>
+    <div class="container-menu">
+    <section>
+        <a class="image-container" href="./seleccionar_sala?categoria=Terraza">
+            <img src="./img/comedor.jpg" alt=""  id="terraza">
+            <div class="text-overlay">Comedor</div>
+        </a>
+        <a class="image-container"  href="./seleccionar_sala?categoria=Comedor">
+            <img src="./img/private.jpg" alt="" id="comedor">
+            <div class="text-overlay">Sala privada</div>
+        </a>
+        <a class="image-container" >
+            <img src="./img/terraza.jpg" alt="" id="privada">
+            <div class="text-overlay">Terraza</div>
+        </a>
+    </section>
+</div>
     
     <script src="./js/imagen.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
