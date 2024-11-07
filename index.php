@@ -7,10 +7,11 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
-<body>
+<body id="body">
     <div class="container"> 
         <div class="left-side">
             <img src="./img/logo.png" alt="Logo">
@@ -22,7 +23,7 @@ session_start();
             <br><br>
             <input type="text" name="Usuario" id="Usuario" class="form-login-label">
             <br><br>
-            <label for="Contra">Contraseña: </label>
+            <label for="Contra">Cont    raseña: </label>
             <br><br>
             <input type="password" name="Contra" id="Contra" class="form-login-label">
             <br><br><br>
