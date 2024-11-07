@@ -56,8 +56,7 @@ session_start();
     <!------------FIN BARRA DE NAVEGACION--------------------->
     <div class="image-grid">
         <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Terraza -->
-            <a href="./mostrar.php?categoria=Terraza">
+            <a href="./seleccionar_sala.php?categoria=Terraza">
                 <img src="./img/terraza.jpg" id="terraza" alt="Imagen de Terraza">
                 <div class="image-text">
                     <h2>Terrazas</h2>
@@ -67,8 +66,7 @@ session_start();
         </div>
 
         <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Comedor -->
-            <a href="./mostrar.php?categoria=Comedor">
+            <a href="./seleccionar_sala.php?categoria=Comedor">
                 <img src="./img/comedor.jpg" id="comedor" alt="Imagen de Comedor">
                 <div class="image-text">
                     <h2>Comedores</h2>
@@ -78,8 +76,7 @@ session_start();
         </div>
 
         <div class="image-item">
-            <!-- Enlace actualizado para pasar categoria=Privada -->
-            <a href="./mostrar.php?categoria=Privada">
+            <a href="./seleccionar_sala.php?categoria=Privada">
                 <img src="./img/private.jpg" id="privada" alt="Imagen de Área Privada">
                 <div class="image-text">
                     <h2>Áreas Privadas</h2>
@@ -88,7 +85,7 @@ session_start();
             </a>
         </div>
     </div>
-    
+
     <script src="./js/imagen.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
