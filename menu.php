@@ -5,6 +5,11 @@ session_start();
 if (!isset($_SESSION['Usuario'])) {
     $_SESSION['Usuario'] = 'Invitado'; // Valor por defecto si no está configurada
 }
+
+// Verificar si el SweetAlert ya se mostró
+if (!isset($_SESSION['sweetalert_mostrado'])) {
+    $_SESSION['sweetalert_mostrado'] = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +24,7 @@ if (!isset($_SESSION['Usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body data-usuario="<?php echo htmlspecialchars($_SESSION['Usuario'], ENT_QUOTES, 'UTF-8'); ?>">
+<body data-usuario="<?php echo htmlspecialchars($_SESSION['Usuario'], ENT_QUOTES, 'UTF-8'); ?>" data-sweetalert="<?php echo $_SESSION['sweetalert_mostrado'] ? 'true' : 'false'; ?>">
 <div class="container">
     <nav class="navegacion">
         <!-- Sección izquierda con el logo grande y el ícono adicional más pequeño -->
