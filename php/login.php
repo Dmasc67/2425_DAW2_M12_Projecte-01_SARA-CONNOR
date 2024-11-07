@@ -17,6 +17,7 @@ if (isset($_POST['btn_iniciar_sesion'])  && !empty($_POST['Usuario']) && !empty(
 
         if ($usuario_db = mysqli_fetch_assoc($resultado)) {
             if (password_verify($contra, $usuario_db['contrasena'])) {
+                $_SESSION['Usuario'] = $usuario;
                 header("Location: ../menu.php");    
                 exit();
             } else {
