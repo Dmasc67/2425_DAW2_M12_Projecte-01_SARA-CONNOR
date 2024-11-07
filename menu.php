@@ -50,7 +50,7 @@ if (!isset($_SESSION['Usuario'])) {
             <img src="./img/private.jpg" alt="" id="comedor">
             <div class="text-overlay">Sala privada</div>
         </a>
-        <a class="image-container" >
+        <a class="image-container" href="./seleccionar_sala?categoria=Privada">
             <img src="./img/terraza.jpg" alt="" id="privada">
             <div class="text-overlay">Terraza</div>
         </a>
