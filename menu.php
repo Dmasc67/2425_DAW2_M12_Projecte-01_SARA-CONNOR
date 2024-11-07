@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+// Verificar si la variable de sesión 'Usuario' está configurada
+if (!isset($_SESSION['Usuario'])) {
+    $_SESSION['Usuario'] = 'Invitado'; // Valor por defecto si no está configurada
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +15,9 @@ session_start();
     <title>Menu</title>
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/popup.js" defer></script>
+    <script src="./js/sweetalert.js" defer></script>
     <style>
         /* Estilo para el botón en la esquina superior derecha */
         .image-item {
@@ -36,7 +40,7 @@ session_start();
     </style>
 </head>
 
-<body>
+<body data-usuario="<?php echo htmlspecialchars($_SESSION['Usuario'], ENT_QUOTES, 'UTF-8'); ?>">
     <nav class="navbar navbar-light bg-lights position-top">
         <div class="container">
             <div>
@@ -89,7 +93,7 @@ session_start();
         </div>
     </div>
     
-    <script src="./js/imagen.js"></script>
+    <script src="./js/sweetalert.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
