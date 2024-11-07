@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Verificar si la variable de sesión 'Usuario' está configurada
+if (!isset($_SESSION['Usuario'])) {
+    $_SESSION['Usuario'] = 'Invitado'; // Valor por defecto si no está configurada
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

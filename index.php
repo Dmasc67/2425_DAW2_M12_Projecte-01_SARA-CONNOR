@@ -17,19 +17,28 @@ session_start();
             <img src="./img/logo.png" alt="Logo">
         </div>
         <div class="right-side">
-        <form action="./php/login.php" method="post" class="form-login">
+        <form id="loginForm" action="./php/login.php" method="post" class="form-login">
         <h2>Iniciar sesión</h2>
             <label for="Usuario">Usuario: </label>
             <br><br>
             <input type="text" name="Usuario" id="Usuario" class="form-login-label">
+            <span id="usuarioError" class="error-message"></span>
             <br><br>
             <label for="Contra">Cont    raseña: </label>
             <br><br>
             <input type="password" name="Contra" id="Contra" class="form-login-label">
+            <span id="contraError" class="error-message"></span>
             <br><br><br>
             <button type="submit" name="btn_iniciar_sesion" class="form-login-button">Iniciar sesion</button>
         </form>  
         </div>  
     </div>
+    <script src="./js/auth.js"></script>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
 </body>
 </html>
