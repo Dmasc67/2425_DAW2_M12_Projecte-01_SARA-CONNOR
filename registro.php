@@ -110,12 +110,12 @@ if (!isset($_SESSION['usuario'])) {
                     <option value="ocupada" <?php echo (isset($_GET['estado']) && $_GET['estado'] == 'ocupada') ? 'selected' : ''; ?>>Ocupada</option>
                 </select>
             </div>
-        </div>
 
-        <!-- Botones -->
-        <div class="me-3">
-            <button type="submit" class="btn btn-primary btn-sm me-2" style="height: 40px; width: 200px;">Filtrar</button>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='registro.php'" style="height: 40px; width: 200px;">Borrar Filtros</button>
+            <!-- Botones -->
+            <div class="d-flex align-items-center mt-3">
+                <button type="submit" class="btn btn-primary btn-sm me-2" style="height: 40px; width: 200px; margin-top: 10px; margin-right: 10px; margin-bottom: 2px;">Filtrar</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='registro.php'" style="height: 40px; width: 200px; margin-top: 10px; margin-left: 7px;">Borrar Filtros</button>
+            </div>
         </div>
     </div>
 </form>
