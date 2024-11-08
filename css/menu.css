@@ -17,6 +17,10 @@ body {
     padding-bottom: 5%;
 }
 
+#historial-container {
+    margin-top: -100px; 
+}
+
 .navegacion {
     display: flex;
     justify-content: space-between;

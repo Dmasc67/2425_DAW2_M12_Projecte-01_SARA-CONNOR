@@ -51,7 +51,7 @@ if (!isset($_SESSION['usuario'])) {
     </div>
 
     <!-- Contenido principal -->
-    <div class="container mt-4">
+    <div id="historial-container" class="container">
         <h2 class="text-white">Historial de Ocupaciones</h2> <!-- Título en color blanco -->
 
         <!-- Formulario de filtros -->

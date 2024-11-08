@@ -3,7 +3,7 @@
 $dbserver="localhost";
 $dbusername="root";
 $dbpassword="";
-$dbbasedatos="bd_restaurante1";
+$dbbasedatos="bd_restaurante";
 try {
     $conexion = mysqli_connect($dbserver, $dbusername,$dbpassword, $dbbasedatos);
 }catch (Exception $e) {
