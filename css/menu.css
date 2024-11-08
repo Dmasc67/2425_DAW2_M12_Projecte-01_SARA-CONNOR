@@ -114,6 +114,80 @@ section img:hover {
     opacity: 1;
 }
 
+.container-menu {
+    padding-left: 3%; 
+    padding-right: 3%;
+}
+
+#icono-navbar {
+    width: 50%;
+}
+
+.mesas-container {
+    padding-top: 5%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.mesa-card {
+    width: 25%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mesa-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.mesa-image img {
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 10px;
+}
+
+.mesa-info p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+.estado-libre {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-ocupada {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-estado {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4CAF50; /* Color verde para el botón "Libre" */
+    cursor: pointer;
+}
+
+.btn-estado:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-estado[disabled] {
+    background-color: #d32f2f; /* Color rojo cuando "Liberar" está deshabilitado */
+}
+
 /* Responsive Styles */
 @media (min-width: 768px) {
     .navbar-title {
@@ -133,3 +207,4 @@ section img:hover {
         height: 400px;
     }
 }
+
