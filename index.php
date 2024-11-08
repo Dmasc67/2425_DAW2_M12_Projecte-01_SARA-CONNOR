@@ -24,7 +24,7 @@ session_start();
             <input type="text" name="Usuario" id="Usuario" class="form-login-label">
             <span id="usuarioError" class="error-message"></span>
             <br><br>
-            <label for="Contra">Cont    raseña: </label>
+            <label for="Contra">Contraseña: </label>
             <br><br>
             <input type="password" name="Contra" id="Contra" class="form-login-label">
             <span id="contraError" class="error-message"></span>
