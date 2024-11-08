@@ -41,7 +41,7 @@ body {
 
 /* Logo */
 .navbar-left .logo {
-    height: 15vh;
+    height: 25vh;
     cursor: pointer;
 }
 
@@ -163,7 +163,7 @@ section img:hover {
 }
 
 .mesa-image img {
-    width: 100%;
+    width: 80%;
     height: 30vh;
     margin-bottom: 10px;
 }
