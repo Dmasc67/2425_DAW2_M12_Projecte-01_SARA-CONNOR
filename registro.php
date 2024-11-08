@@ -36,7 +36,7 @@ if (!isset($_SESSION['usuario'])) {
 
             <!-- Título en el centro -->
             <div class="navbar-title">
-                <h3>Bienvenido <?php echo $_SESSION['usuario']; ?></h3>
+                <h3>Historial de ocupaciones</h3>
             </div>
 
             <!-- Icono de logout a la derecha -->

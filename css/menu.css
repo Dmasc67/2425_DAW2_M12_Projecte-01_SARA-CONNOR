@@ -14,6 +14,11 @@ body {
     padding-top: 3%; 
     padding-bottom: 5%;
 }
+
+.container-menu{
+    padding-left: 3%; 
+    padding-right: 3%;
+}
 .navegacion {
     display: flex;
     justify-content: space-between;
@@ -26,33 +31,30 @@ body {
     border-radius: 10px;
 }
 
-/* Sección izquierda */
 .navbar-left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Estilo específico para el logo */
 .navbar-left .logo {
-    height: 15vh; /* Tamaño mayor solo para el logo */
+    height: 15vh;
     cursor: pointer;
 }
 
-/* Tamaño normal para el ícono adicional */
 .navbar-left .navbar-icon {
     height: 30px;
     cursor: pointer;
 }
 
-/* Título en el centro */
 .navbar-title {
+    width: 100%;
     flex-grow: 1;
     text-align: center;
     font-size: 1.2em;
+    padding-right: 10%;
 }
 
-/* Icono de logout a la derecha */
 .navbar-right img {
     height: 30px;
     cursor: pointer;
@@ -113,4 +115,68 @@ section img:hover {
 }
 #icono-navbar{
     width: 50%;
+}
+.mesas-container{
+    padding-top: 5%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly
+
+}
+.mesa-card {
+    width: 25%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mesa-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.mesa-image img {
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 10px;
+}
+
+.mesa-info p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+.estado-libre {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-ocupada {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-estado {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4CAF50; /* Green color for "Libre" button */
+    cursor: pointer;
+}
+
+.btn-estado:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-estado[disabled] {
+    background-color: #d32f2f; /* Red color when "Liberar" is disabled */
 }
