@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+date_default_timezone_set('Europe/Madrid');
 require_once('./php/conexion.php');
 
 // Verificación de sesión iniciada
