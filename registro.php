@@ -40,6 +40,10 @@ if (!isset($_SESSION['usuario'])) {
             </div>
 
             <!-- Icono de logout a la derecha -->
+            <div class="navbar-right" style="margin-right: 18px;">
+            <a href="./menu.php"><img src="./img/atras.png" alt="Logout" class="navbar-icon"></a>
+            </div>
+            
             <div class="navbar-right">
                 <a href="./salir.php"><img src="./img/logout.png" alt="Logout" class="navbar-icon"></a>
             </div>
