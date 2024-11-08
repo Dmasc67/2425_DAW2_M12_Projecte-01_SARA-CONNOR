@@ -3,6 +3,7 @@ html {
     font-style: normal;
     font-weight: bold;
 }
+
 body {
     background-image: url(../img/fondo.jpg);
     justify-content: center;
@@ -10,15 +11,12 @@ body {
     flex-direction: column;
     height: 100%;
 }
-.container{
-    padding-top: 3%; 
+
+.container {
+    padding-top: 5%;
     padding-bottom: 5%;
 }
 
-.container-menu{
-    padding-left: 3%; 
-    padding-right: 3%;
-}
 .navegacion {
     display: flex;
     justify-content: space-between;
@@ -37,11 +35,13 @@ body {
     gap: 10px;
 }
 
+/* Logo */
 .navbar-left .logo {
     height: 15vh;
     cursor: pointer;
 }
 
+/* Ícono adicional */
 .navbar-left .navbar-icon {
     height: 30px;
     cursor: pointer;
@@ -59,20 +59,22 @@ body {
     height: 30px;
     cursor: pointer;
 }
+
 section {
     display: flex;
     width: 100%;
-    height: 100%;
     margin: 0 auto;
     border-radius: 20px;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .image-container {
     position: relative;
-    width: 50vh;
-    height: 60vh;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
     overflow: hidden;
     transition: transform 0.5s ease;
 }
@@ -88,23 +90,20 @@ section img {
 
 section img:hover {
     opacity: 1;
-    z-index: 9999;
-    filter: contrast(120%);
     filter: brightness(0.4);
 }
 
 .image-container:hover {
-    transition: 0.3s;
-    transform: scale(1.2);
-    z-index: 9999;
+    transform: scale(1.1);
 }
+
 .text-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -113,17 +112,24 @@ section img:hover {
 .image-container:hover .text-overlay {
     opacity: 1;
 }
-#icono-navbar{
+
+.container-menu {
+    padding-left: 3%; 
+    padding-right: 3%;
+}
+
+#icono-navbar {
     width: 50%;
 }
-.mesas-container{
+
+.mesas-container {
     padding-top: 5%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly
-
+    justify-content: space-evenly;
 }
+
 .mesa-card {
     width: 25%;
     border: 1px solid #ddd;
@@ -168,7 +174,7 @@ section img:hover {
     border-radius: 5px;
     font-size: 1em;
     color: #fff;
-    background-color: #4CAF50; /* Green color for "Libre" button */
+    background-color: #4CAF50; /* Color verde para el botón "Libre" */
     cursor: pointer;
 }
 
@@ -178,5 +184,26 @@ section img:hover {
 }
 
 .btn-estado[disabled] {
-    background-color: #d32f2f; /* Red color when "Liberar" is disabled */
+    background-color: #d32f2f; /* Color rojo cuando "Liberar" está deshabilitado */
 }
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .navbar-title {
+        font-size: 1.5em;
+    }
+
+    .navegacion {
+        padding: 15px 30px;
+    }
+
+    section {
+        gap: 30px;
+    }
+
+    .image-container {
+        max-width: 400px;
+        height: 400px;
+    }
+}
+
