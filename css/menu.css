@@ -45,6 +45,18 @@ body {
     cursor: pointer;
 }
 
+/* Color verde para el botón de estado "libre" */
+.btn-estado.btn-libre {
+    background-color: #4CAF50; /* Verde */
+    color: #fff;
+}
+
+/* Color rojo para el botón de estado "ocupada" */
+.btn-estado.btn-ocupada {
+    background-color: #d32f2f; /* Rojo */
+    color: #fff;
+}
+
 /* Ícono adicional */
 .navbar-left .navbar-icon {
     height: 30px;

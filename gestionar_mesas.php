@@ -145,7 +145,7 @@ try {
                         <form method='POST' action='gestionar_mesas.php?categoria=$categoria_seleccionada&id_sala=$id_sala'>
                             <input type='hidden' name='mesa_id' value='" . htmlspecialchars($mesa['id_mesa']) . "'>
                             <input type='hidden' name='estado' value='" . $estado_actual . "'>
-                            <button type='submit' name='cambiar_estado' class='btn-estado' " . ($desactivar_boton ? 'disabled' : '') . ">" . ($estado_opuesto === 'Liberar' && $desactivar_boton ? 'No puedes liberar esta mesa' : $estado_opuesto) . "</button>
+                            <button type='submit' name='cambiar_estado' class='btn-estado " . ($estado_actual === 'libre' ? 'btn-libre' : 'btn-ocupada') . "' " . ($desactivar_boton ? 'disabled' : '') . ">" . ($estado_opuesto === 'Liberar' && $desactivar_boton ? 'No puedes liberar esta mesa' : $estado_opuesto) . "</button>
                         </form>
                     </div>";
                 }
