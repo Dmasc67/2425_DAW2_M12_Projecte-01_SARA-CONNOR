@@ -22,7 +22,8 @@ CREATE TABLE tbl_mesas (
     id_mesa INT PRIMARY KEY AUTO_INCREMENT,
     numero_mesa INT,
     id_sala INT,
-    estado ENUM('libre','ocupada') DEFAULT 'libre'   -- El estado de la mesa (libre u ocupada)
+    numero_sillas INT,
+    estado ENUM('libre','ocupada') DEFAULT 'libre'
 );
 
 -- Tabla para los registros de ocupación de las mesas
@@ -63,51 +64,49 @@ INSERT INTO tbl_salas (id_sala, nombre_sala, tipo_sala, capacidad) VALUES
     (8, 'Sala Privada 3', 'Privada', 12),
     (9, 'Sala Privada 4', 'Privada', 15);
 
--- Insertar mesas en las terrazas (4 mesas en cada terraza)
-INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
+INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, numero_sillas, estado) VALUES
 -- Mesas Terraza 1
-    (1, 101, 1, 'libre'),
-    (2, 102, 1, 'libre'),
-    (3, 103, 1, 'libre'),
-    (4, 104, 1, 'libre'),
+    (1, 101, 1, 4, 'libre'),
+    (2, 102, 1, 6, 'libre'),
+    (3, 103, 1, 4, 'libre'),
+    (4, 104, 1, 9, 'libre'),
 -- Mesas Terraza 2
-    (5, 201, 2, 'libre'),
-    (6, 202, 2, 'libre'),
-    (7, 203, 2, 'libre'),
-    (8, 204, 2, 'libre'),
+    (5, 201, 2, 4, 'libre'),
+    (6, 202, 2, 6, 'libre'),
+    (7, 203, 2, 12, 'libre'),
+    (8, 204, 2, 4, 'libre'),
 -- Mesas Terraza 3
-    (9, 301, 3, 'libre'),
-    (10, 302, 3, 'libre'),
-    (11, 303, 3, 'libre'),
-    (12, 304, 3, 'libre');
-
+    (9, 301, 3, 4, 'libre'),
+    (10, 302, 3, 4, 'libre'),
+    (11, 303, 3, 7, 'libre'),
+    (12, 304, 3, 2, 'libre');
 
 -- Insertar mesas en los comedores (10 mesas en cada comedor)
-INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
+INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala,  numero_sillas, estado) VALUES
     -- Mesas para el Comedor 1
-    (13, 401, 4, 'libre'),
-    (14, 402, 4, 'libre'),
-    (15, 403, 4, 'libre'),
-    (16, 404, 4, 'libre'),
-    (17, 405, 4, 'libre'),
-    (18, 406, 4, 'libre'),
+    (13, 401, 4, 2, 'libre'),
+    (14, 402, 4, 9, 'libre'),
+    (15, 403, 4, 2, 'libre'),
+    (16, 404, 4, 7, 'libre'),
+    (17, 405, 4, 5, 'libre'),
+    (18, 406, 4, 6, 'libre'),
     -- Mesas para el Comedor 2
-    (19, 501, 5, 'libre'),
-    (20, 502, 5, 'libre'),
-    (21, 503, 5, 'libre'),
-    (22, 504, 5, 'libre'),
-    (23, 505, 5, 'libre'),
-    (24, 506, 5, 'libre');
+    (19, 501, 5, 12, 'libre'),
+    (20, 502, 5, 9, 'libre'),
+    (21, 503, 5, 16, 'libre'),
+    (22, 504, 5, 2, 'libre'),
+    (23, 505, 5, 4, 'libre'),
+    (24, 506, 5, 4, 'libre');
 
     -- Insertar mesas en las salas privadas (1 mesa por sala)
-INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala, estado) VALUES
-    (25, 601, 6, 'libre'),
-    (26, 701, 7, 'libre'),
-    (27, 801, 8, 'libre'),
-    (28, 901, 9, 'libre');
+INSERT INTO tbl_mesas (id_mesa, numero_mesa, id_sala,  numero_sillas, estado) VALUES
+    (25, 601, 6, 12, 'libre'),
+    (26, 701, 7, 12, 'libre'),
+    (27, 801, 8, 16, 'libre'),
+    (28, 901, 9, 18, 'libre');
 
 -- Insertar ocupaciones (registros de ocupación de mesas)
 INSERT INTO tbl_ocupaciones (id_ocupacion, id_usuario, id_mesa, fecha_inicio, fecha_fin) VALUES
-    (1, 1, 1, '2023-11-20 12:30:00', '2023-11-20 14:30:00'),
-    (2, 2, 3, '2023-11-20 18:00:00', '2023-11-20 19:30:00'),
-    (3, 3, 5, '2023-11-20 20:00:00', '2023-11-20 22:00:00');
+    (1, 1, 1, '2024-11-15 12:30:00', '2024-11-15 14:30:00'),
+    (2, 2, 3, '2024-11-15 18:00:00', '2024-11-15 19:30:00'),
+    (3, 3, 5, '2024-11-15 20:00:00', '2024-11-15 22:00:00');
