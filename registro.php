@@ -49,10 +49,10 @@ if (!isset($_SESSION['usuario'])) {
             </div>
         </nav>
     </div>
-
+ <br>
     <!-- Contenido principal -->
     <div id="historial-container" class="container">
-        <h2 class="text-white">Historial de Ocupaciones</h2> <!-- Título en color blanco -->
+         <h2 id="titulo-historial" class="text-white">Historial de Ocupaciones</h2> <!--Título en color blanco -->
 
         <!-- Formulario de filtros -->
         <form method="GET" action="registro.php" class="mt-3">
@@ -165,34 +165,36 @@ if (!isset($_SESSION['usuario'])) {
         ?>
 
         <!-- Mostrar resultados en tabla -->
-        <table class="table table-striped mt-4">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Usuario</th>
-                    <th>Sala</th>
-                    <th>Número de Mesa</th>
-                    <th>Estado</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Duración (minutos)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($ocupacion = mysqli_fetch_assoc($result_historial)) {
-                    echo "<tr>
-                            <td>{$ocupacion['nombre_user']}</td>
-                            <td>{$ocupacion['nombre_sala']}</td>
-                            <td>{$ocupacion['numero_mesa']}</td>
-                            <td>{$ocupacion['estado']}</td>
-                            <td>{$ocupacion['fecha_inicio']}</td>
-                            <td>{$ocupacion['fecha_fin']}</td>
-                            <td>{$ocupacion['duracion']}</td>
-                        </tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+<div class="table-responsive mt-4">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Usuario</th>
+                <th>Sala</th>
+                <th>Número de Mesa</th>
+                <th>Estado</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Duración (minutos)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($ocupacion = mysqli_fetch_assoc($result_historial)) {
+                echo "<tr>
+                        <td>{$ocupacion['nombre_user']}</td>
+                        <td>{$ocupacion['nombre_sala']}</td>
+                        <td>{$ocupacion['numero_mesa']}</td>
+                        <td>{$ocupacion['estado']}</td>
+                        <td>{$ocupacion['fecha_inicio']}</td>
+                        <td>{$ocupacion['fecha_fin']}</td>
+                        <td>{$ocupacion['duracion']}</td>
+                    </tr>";
+            }
+            ?>
+        </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="./js/sweetalert.js"></script>
