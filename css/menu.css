@@ -42,18 +42,19 @@ body {
 /* Logo */
 .navbar-left .logo {
     height: 22vh;
+    width: 100%;
     cursor: pointer;
 }
 
 /* Color verde para el botón de estado "libre" */
 .btn-estado.btn-libre {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: #fff;
 }
 
 /* Color rojo para el botón de estado "ocupada" */
 .btn-estado.btn-ocupada {
-    background-color: #d32f2f; /* Rojo */
+    background-color: #d32f2f; 
     color: #fff;
 }
 
@@ -220,5 +221,8 @@ section img:hover {
     .image-container {
         max-width: 400px;
         height: 400px;
+    }
+    .navbar-left .logo {
+        height: 22vh; 
     }
 }

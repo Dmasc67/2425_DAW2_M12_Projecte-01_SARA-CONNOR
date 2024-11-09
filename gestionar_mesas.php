@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 date_default_timezone_set('Europe/Madrid');
@@ -48,7 +47,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body data-usuario="<?php echo htmlspecialchars($_SESSION['Usuario'], ENT_QUOTES, 'UTF-8'); ?>" data-sweetalert="<?php echo $_SESSION['sweetalert_mostrado'] ? 'true' : 'false'; ?>">
+<body data-usuario="<?php echo htmlspecialchars($_SESSION['Usuario'], ENT_QUOTES, 'UTF-8'); ?>" data-sweetalert="<?php echo $_SESSION['sweetalert_mostrado'] ? 'true' : 'false'; ?>" data-mesa-sweetalert="<?php echo isset($_SESSION['mesa_sweetalert']) && $_SESSION['mesa_sweetalert'] ? 'true' : 'false'; ?>">
 <div class="container">
     <nav class="navegacion">
         <!-- Sección izquierda con el logo grande y el ícono adicional más pequeño -->
@@ -191,6 +190,9 @@ try {
             mysqli_stmt_execute($stmt_end);
             mysqli_stmt_close($stmt_end);
         }
+
+        // Establecer una variable de sesión para indicar que se debe mostrar el SweetAlert
+        $_SESSION['mesa_sweetalert'] = true;
     }
 
     // Confirmar la transacción
@@ -211,5 +213,7 @@ try {
 ?>
 
 </div>
+<script src="./js/sweetalert.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 </html>
