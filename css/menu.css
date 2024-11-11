@@ -39,7 +39,6 @@ body {
     gap: 10px;
 }
 
-/* Logo */
 .navbar-left .logo {
     height: auto;
     max-height: 22vh;
@@ -47,19 +46,16 @@ body {
     object-fit: contain;
 }
 
-/* Color verde para el botón de estado "libre" */
 .btn-estado.btn-libre {
     background-color: #4CAF50; 
     color: #fff;
 }
 
-/* Color rojo para el botón de estado "ocupada" */
 .btn-estado.btn-ocupada {
     background-color: #d32f2f; 
     color: #fff;
 }
 
-/* Ícono adicional */
 .navbar-left .navbar-icon {
     height: 30px;
     cursor: pointer;
@@ -95,8 +91,8 @@ section {
     height: 60vh;
     overflow: hidden;
     transition: transform 0.5s ease;
-    flex: 1 1 200px; /* Ajusta el tamaño base de los cuadros */
-    margin: 10px; /* Espacio entre los cuadros */
+    flex: 1 1 200px;
+    margin: 10px;
     text-align: center;
 }
 
@@ -139,8 +135,8 @@ section img:hover {
     padding-right: 3%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Ajusta según tus necesidades */
-    gap: 10px; /* Espacio entre los cuadros */
+    justify-content: center;
+    gap: 10px;
 }
 
 #icono-navbar {
@@ -199,7 +195,7 @@ section img:hover {
     border-radius: 5px;
     font-size: 1em;
     color: #fff;
-    background-color: #4CAF50; /* Color verde para el botón "Libre" */
+    background-color: #4CAF50;
     cursor: pointer;
 }
 
@@ -209,11 +205,9 @@ section img:hover {
 }
 
 .btn-estado[disabled] {
-    background-color: #d32f2f; /* Color rojo cuando "Liberar" está deshabilitado */
+    background-color: #d32f2f;
 }
 
-
-/* Responsive Styles */
 @media (min-width: 12px) {
     .navbar-title {
         font-size: 1.5em;
@@ -233,42 +227,42 @@ section img:hover {
     }
 
     .navbar-left .logo {
-        max-height: 25vh; /* Altura máxima para pantallas más grandes */
+        max-height: 25vh;
         width: auto;
     }
 
     .mesa-card {
-        width: 100%; /* Las tarjetas ocuparán todo el ancho en pantallas pequeñas */
-        margin: 10px 0; /* Separación entre las tarjetas */
+        width: 100%;
+        margin: 10px 0;
     }
 
     .mesa-image img {
-        height: auto; /* Hacer que las imágenes dentro de las tarjetas se ajusten */
+        height: auto;
     }
 
     .mesas-container {
-        justify-content: center; /* Centrar las tarjetas */
+        justify-content: center;
         padding-left: 2%;
         padding-right: 2%;
     }
-    /* Ajusta este valor si necesitas que el diseño responda a pantallas de otro tamaño */
+
     #titulo-historial {
-        margin-top: 60px; /* Aumenta el margen superior para que quede separado de la navbar en móvil */
-        font-size: 20px;  /* Ajusta el tamaño si es necesario */
+        margin-top: 60px;
+        font-size: 20px;
     }
 
     .table td, .table th {
-        padding: 8px; /* Reduce el espacio de padding en celdas para pantallas pequeñas */
+        padding: 8px;
         font-size: 12px;
-        border: 1px solid #ddd; /* Añade un borde fino a las celdas */
+        border: 1px solid #ddd;
     }
     .table thead th {
-        background-color: #A7A1A1; /* Color de fondo para la cabecera */
-        color: white; /* Color de texto en la cabecera */
-        font-weight: bold; /* Aumenta el grosor del texto en la cabecera */
+        background-color: #A7A1A1;
+        color: white;
+        font-weight: bold;
     }
-
 }
+
 @media (min-width: 768px) {
     .mesa-card {
         width: 25%;
@@ -308,21 +302,20 @@ section img:hover {
     }
  
     .table {
-        border-collapse: collapse; /* Elimina los espacios entre las celdas */
-        width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
-        margin: 0 auto; /* Centra la tabla */
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0 auto; 
     }
 
     .table th, .table td {
-        padding: 12px; /* Añade espaciado dentro de las celdas */
-        text-align: center; /* Centra el texto dentro de cada celda */
-        border: 1px solid #ddd; /* Añade un borde fino a las celdas */
-        font-size: 16px; /* Tamaño de fuente general */
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 16px;
     }
     .table thead th {
-        background-color: #A7A1A1; /* Color de fondo para la cabecera */
-        color: white; /* Color de texto en la cabecera */
-        font-weight: bold; /* Aumenta el grosor del texto en la cabecera */
+        background-color: #A7A1A1;
+        color: white;
+        font-weight: bold;
     }
-    
 }
