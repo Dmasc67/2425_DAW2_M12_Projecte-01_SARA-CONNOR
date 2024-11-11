@@ -13,8 +13,7 @@ CREATE TABLE tbl_usuarios (
 CREATE TABLE tbl_salas (
     id_sala INT PRIMARY KEY AUTO_INCREMENT,
     nombre_sala VARCHAR(100),
-    tipo_sala VARCHAR(50),         -- Tipo de sala (Terraza, Comedor, Sala Privada...)
-    capacidad INT                  -- Capacidad de la sala (número de mesas o personas)
+    tipo_sala VARCHAR(50)       -- Tipo de sala (Terraza, Comedor, Sala Privada...)
 );
 
 -- Tabla de mesas

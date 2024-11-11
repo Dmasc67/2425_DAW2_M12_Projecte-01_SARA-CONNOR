@@ -2,12 +2,10 @@
 session_start();
 require_once('./php/conexion.php');
 
-// Verificación de sesión iniciada
 if (!isset($_SESSION['usuario'])) {
     header("Location: index.php?error=sesion_no_iniciada");
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,18 +21,15 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 <div class="container">
     <nav class="navegacion">
-        <!-- Sección izquierda con el logo grande y el ícono adicional más pequeño -->
         <div class="navbar-left">
             <a href="./menu.php"><img src="./img/logo.png" alt="Logo de la Marca" class="logo" style="width: 100%;"></a>
             <a href="./registro.php"><img src="./img/lbook.png" alt="Ícono adicional" class="navbar-icon"></a>
         </div>
 
-        <!-- Título en el centro -->
         <div class="navbar-title">
             <h3><?php if (isset($_GET['categoria'])){echo $_GET['categoria'];}?></h3>
-         </div>
+        </div>
 
-        <!-- Icono de logout a la derecha -->
         <div class="navbar-right" style="margin-right: 18px;">
             <a href="./menu.php"><img src="./img/atras.png" alt="Logout" class="navbar-icon"></a>
         </div>
@@ -46,62 +41,80 @@ if (!isset($_SESSION['usuario'])) {
 </div>  
 <div class="container-menu">
     <section>
-    <?php
-    $categoria_seleccionada = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+<?php
+$categoria_seleccionada = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 
-    try {
-        // Deshabilitar el autocommit para iniciar la transacción
-        mysqli_autocommit($conexion, false); 
+try {
+    mysqli_autocommit($conexion, false); 
 
-        // Iniciar la transacción
-        mysqli_begin_transaction($conexion,MYSQLI_TRANS_START_READ_WRITE);
+    mysqli_begin_transaction($conexion, MYSQLI_TRANS_START_READ_WRITE);
 
-        // Consultar salas por tipo
-        $query_salas = "SELECT * FROM tbl_salas WHERE tipo_sala = ?";
-        $stmt_salas = mysqli_prepare($conexion, $query_salas);
+    $query_salas = "SELECT * FROM tbl_salas WHERE tipo_sala = ?";
+    $stmt_salas = mysqli_prepare($conexion, $query_salas);
 
-        if (!$stmt_salas) {
-            throw new Exception("Error al preparar la consulta: " . mysqli_error($conexion));
+    if (!$stmt_salas) {
+        throw new Exception("Error al preparar la consulta: " . mysqli_error($conexion));
+    }
+
+    mysqli_stmt_bind_param($stmt_salas, "s", $categoria_seleccionada);
+
+    if (!mysqli_stmt_execute($stmt_salas)) {
+        throw new Exception("Error al ejecutar la consulta: " . mysqli_stmt_error($stmt_salas));
+    }
+
+    $result_salas = mysqli_stmt_get_result($stmt_salas);
+
+    if ($result_salas && mysqli_num_rows($result_salas) > 0) {
+        while ($sala = mysqli_fetch_assoc($result_salas)) {
+            $id_sala = $sala['id_sala'];
+
+            // Obtener el total de sillas en la sala
+            $query_total_sillas = "
+                SELECT SUM(m.numero_sillas) AS total_sillas
+                FROM tbl_mesas m
+                WHERE m.id_sala = ?";
+            $stmt_total_sillas = mysqli_prepare($conexion, $query_total_sillas);
+            mysqli_stmt_bind_param($stmt_total_sillas, "i", $id_sala);
+            mysqli_stmt_execute($stmt_total_sillas);
+            $result_total_sillas = mysqli_stmt_get_result($stmt_total_sillas);
+            $total_sillas = mysqli_fetch_assoc($result_total_sillas)['total_sillas'];
+            
+            // Obtener las sillas libres
+            $query_sillas_libres = "
+                SELECT SUM(m.numero_sillas) AS total_sillas_libres
+                FROM tbl_mesas m
+                WHERE m.estado = 'libre' AND m.id_sala = ?";
+            $stmt_sillas_libres = mysqli_prepare($conexion, $query_sillas_libres);
+            mysqli_stmt_bind_param($stmt_sillas_libres, "i", $id_sala);
+            mysqli_stmt_execute($stmt_sillas_libres);
+            $result_sillas_libres = mysqli_stmt_get_result($stmt_sillas_libres);
+            $sillas_libres = mysqli_fetch_assoc($result_sillas_libres)['total_sillas_libres'];
+            
+            mysqli_stmt_close($stmt_total_sillas);
+            mysqli_stmt_close($stmt_sillas_libres);
+
+            // Mostrar la información
+            echo "<a class='image-container' href='./gestionar_mesas.php?categoria=" . urlencode($categoria_seleccionada) . "&id_sala=" . $id_sala . "'>
+                    <img src='./img/" . htmlspecialchars($sala['nombre_sala']) . ".jpg' alt='' id='terraza'>
+                    <div class='text-overlay'>" . htmlspecialchars($sala['nombre_sala']) . "<br>Sillas libres: " . ($sillas_libres ?? 0). "/" . ($total_sillas ?? 0)  . "</div>
+                </a>";
         }
+    } else {
+        echo "<p>No hay salas disponibles para esta categoría.</p>";
+    }
 
-        // Vincular el parámetro
-        mysqli_stmt_bind_param($stmt_salas, "s", $categoria_seleccionada);
+    mysqli_stmt_close($stmt_salas);
 
-        // Ejecutar la consulta
-        if (!mysqli_stmt_execute($stmt_salas)) {
-            throw new Exception("Error al ejecutar la consulta: " . mysqli_stmt_error($stmt_salas));
-        }
+    mysqli_commit($conexion);
+    mysqli_close($conexion);
 
-        $result_salas = mysqli_stmt_get_result($stmt_salas);
+} catch (Exception $e) {
+    mysqli_rollback($conexion);
+    echo "<p>Error: " . $e->getMessage() . "</p>";
+} 
+?>
 
-        // Comprobar si la consulta devuelve resultados
-        if ($result_salas && mysqli_num_rows($result_salas) > 0) {
-            // Mostrar las salas disponibles
-            while ($sala = mysqli_fetch_assoc($result_salas)) {
-                echo "<a class='image-container' href='./gestionar_mesas.php?categoria=" . urlencode($categoria_seleccionada) . "&id_sala=" . $sala['id_sala'] . "'>
-                        <img src='./img/" . htmlspecialchars($sala['nombre_sala']) . ".jpg' alt='' id='terraza'>
-                        <div class='text-overlay'>" . htmlspecialchars($sala['nombre_sala']) . "</div>
-                    </a>";
-            }
-        } else {
-            echo "<p>No hay salas disponibles para esta categoría.</p>";
-        }
-
-        // Cerrar la sentencia
-        mysqli_stmt_close($stmt_salas);
-
-        // Si todo fue bien, realizar el commit
-        mysqli_commit($conexion);
-        mysqli_close($conexion);
-
-    } catch (Exception $e) {
-        // En caso de error, hacer rollback
-        mysqli_rollback($conexion);
-        // Mostrar el mensaje de error
-        echo "<p>Error: " . $e->getMessage() . "</p>";
-    } 
-    ?>
-</section>
+    </section>
 </div>
 </body>
 </html>
