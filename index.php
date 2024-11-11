@@ -2,17 +2,16 @@
 session_start();
 ?>
 <head>
-    <meta charset="UTF-8"> <!-- Define la codificación de caracteres en UTF-8, necesaria para soportar caracteres especiales (e.g., ñ, á, é) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura el diseño para adaptarse a dispositivos móviles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Importación de la fuente 'Roboto' de Google Fonts para darle un estilo de fuente consistente a la página -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     
-    <!-- Vinculación a una hoja de estilos CSS externa para personalizar el diseño de la página -->
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title> <!-- Título de la página que aparecerá en la pestaña del navegador -->
+    <title>Document</title> 
 </head>
 
 <body id="body">
