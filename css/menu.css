@@ -95,6 +95,9 @@ section {
     height: 60vh;
     overflow: hidden;
     transition: transform 0.5s ease;
+    flex: 1 1 200px; /* Ajusta el tamaño base de los cuadros */
+    margin: 10px; /* Espacio entre los cuadros */
+    text-align: center;
 }
 
 section img {
@@ -134,6 +137,10 @@ section img:hover {
 .container-menu {
     padding-left: 3%; 
     padding-right: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ajusta según tus necesidades */
+    gap: 10px; /* Espacio entre los cuadros */
 }
 
 #icono-navbar {
