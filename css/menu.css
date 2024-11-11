@@ -41,9 +41,10 @@ body {
 
 /* Logo */
 .navbar-left .logo {
-    height: 22vh;
-    width: 100%;
-    cursor: pointer;
+    height: auto;
+    max-height: 22vh;
+    width: auto;
+    object-fit: contain;
 }
 
 /* Color verde para el botón de estado "libre" */
@@ -94,6 +95,9 @@ section {
     height: 60vh;
     overflow: hidden;
     transition: transform 0.5s ease;
+    flex: 1 1 200px; /* Ajusta el tamaño base de los cuadros */
+    margin: 10px; /* Espacio entre los cuadros */
+    text-align: center;
 }
 
 section img {
@@ -133,6 +137,10 @@ section img:hover {
 .container-menu {
     padding-left: 3%; 
     padding-right: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ajusta según tus necesidades */
+    gap: 10px; /* Espacio entre los cuadros */
 }
 
 #icono-navbar {
@@ -204,8 +212,9 @@ section img:hover {
     background-color: #d32f2f; /* Color rojo cuando "Liberar" está deshabilitado */
 }
 
+
 /* Responsive Styles */
-@media (min-width: 768px) {
+@media (min-width: 12px) {
     .navbar-title {
         font-size: 1.5em;
     }
@@ -222,7 +231,98 @@ section img:hover {
         max-width: 400px;
         height: 400px;
     }
+
     .navbar-left .logo {
-        height: 22vh; 
+        max-height: 25vh; /* Altura máxima para pantallas más grandes */
+        width: auto;
     }
+
+    .mesa-card {
+        width: 100%; /* Las tarjetas ocuparán todo el ancho en pantallas pequeñas */
+        margin: 10px 0; /* Separación entre las tarjetas */
+    }
+
+    .mesa-image img {
+        height: auto; /* Hacer que las imágenes dentro de las tarjetas se ajusten */
+    }
+
+    .mesas-container {
+        justify-content: center; /* Centrar las tarjetas */
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    /* Ajusta este valor si necesitas que el diseño responda a pantallas de otro tamaño */
+    #titulo-historial {
+        margin-top: 60px; /* Aumenta el margen superior para que quede separado de la navbar en móvil */
+        font-size: 20px;  /* Ajusta el tamaño si es necesario */
+    }
+
+    .table td, .table th {
+        padding: 8px; /* Reduce el espacio de padding en celdas para pantallas pequeñas */
+        font-size: 12px;
+        border: 1px solid #ddd; /* Añade un borde fino a las celdas */
+    }
+    .table thead th {
+        background-color: #A7A1A1; /* Color de fondo para la cabecera */
+        color: white; /* Color de texto en la cabecera */
+        font-weight: bold; /* Aumenta el grosor del texto en la cabecera */
+    }
+
+}
+@media (min-width: 768px) {
+    .mesa-card {
+        width: 25%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        background-color: #fff;
+        margin: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-left .logo {
+        height: auto; 
+        max-height: 22vh; 
+        width: auto; 
+        object-fit: contain; 
+    }
+
+    .mesa-image img {
+        width: 80%;
+        height: 30vh;
+        margin-bottom: 10px;
+    }
+
+    .mesas-container {
+        padding-top: 5%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    #titulo-historial {
+        font-size: 30px;
+        margin-top: 0;
+    }
+ 
+    .table {
+        border-collapse: collapse; /* Elimina los espacios entre las celdas */
+        width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+        margin: 0 auto; /* Centra la tabla */
+    }
+
+    .table th, .table td {
+        padding: 12px; /* Añade espaciado dentro de las celdas */
+        text-align: center; /* Centra el texto dentro de cada celda */
+        border: 1px solid #ddd; /* Añade un borde fino a las celdas */
+        font-size: 16px; /* Tamaño de fuente general */
+    }
+    .table thead th {
+        background-color: #A7A1A1; /* Color de fondo para la cabecera */
+        color: white; /* Color de texto en la cabecera */
+        font-weight: bold; /* Aumenta el grosor del texto en la cabecera */
+    }
+    
 }
