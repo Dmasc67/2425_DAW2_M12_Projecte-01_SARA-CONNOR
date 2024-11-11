@@ -74,7 +74,7 @@ Se ha utilizado una planificación en GitHub para el seguimiento del proyecto. L
 ---
 
 ### 📞 Contacto
-Para preguntas o comentarios, contáctanos a través del repositorio de GitHub.
+Para preguntas o comentarios, contáctanos a través del repositorio de GitHub!.
 
 ---
 
