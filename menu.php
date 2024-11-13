@@ -3,8 +3,9 @@ session_start();
 require_once('./php/conexion.php');
 
 // Verificar si la variable de sesión 'Usuario' está configurada
-if (!isset($_SESSION['Usuario'])) {
-    $_SESSION['Usuario'] = 'Invitado'; // Valor por defecto si no está configurada
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?error=sesion_no_iniciada");
+    exit();
 }
 // Verificar si el SweetAlert ya se mostró
 if (!isset($_SESSION['sweetalert_mostrado'])) {
