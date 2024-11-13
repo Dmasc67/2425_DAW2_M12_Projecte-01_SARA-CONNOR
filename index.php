@@ -1,17 +1,18 @@
 <?php
 session_start();
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Importación de la fuente 'Roboto' de Google Fonts para darle un estilo de fuente consistente a la página -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title> 
+    <title>Document</title>
 </head>
 
 <body id="body">
@@ -20,7 +21,7 @@ session_start();
             <img src="./img/logo.png" alt="Logo"> <!-- Imagen del logo de la empresa o aplicación -->
         </div>
         <!-- Sección derecha donde se encuentra el formulario de inicio de sesión -->
-        <div class="right-side"> 
+        <div class="right-side">
             <!-- Formulario de inicio de sesión que envía los datos al archivo login.php en el servidor para autenticación -->
             <form id="loginForm" action="./php/login.php" method="post" class="form-login">
                 <h2>Iniciar sesión</h2> <!-- Título del formulario -->
@@ -41,15 +42,16 @@ session_start();
                 <br><br><br>
                 <!-- Botón para enviar el formulario e intentar iniciar sesión -->
                 <button type="submit" name="btn_iniciar_sesion" class="form-login-button">Iniciar sesion</button>
-            </form>  
-        </div>  
+            </form>
+        </div>
     </div>
     <script src="./js/auth.js"></script>
     <style>
         .error-message {
             color: red;
-            font-size: 0.9em; 
+            font-size: 0.9em;
         }
     </style>
 </body>
+
 </html>
