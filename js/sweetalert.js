@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (usuario && !sweetalertMostrado) {
         Swal.fire({
             title: '¡Bienvenido!',
-            text: `Hola ${usuario}, bienvenido al portal.`,
+            text: `Hola ${usuario}, bienvenido/a al portal.`,
             icon: 'success',
             confirmButtonText: 'Gracias'
         }).then(() => {
